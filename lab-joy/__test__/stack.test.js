@@ -1,53 +1,87 @@
-// 'use strict'
+'use strict'
 
-// const Stack = require('../lib/stack')
-// require('jest')
+require('jest');
+const Stack = require('../lib/stack');
 
-// describe('Stack Data Structure Module', function () {
-//     beforeEach(() => this.stack = new Stack())
+describe('Stack Data Structure Module', () => {
+    describe('Default Properties', () => {
+        let stack = new Stack();
 
-//     describe('default properties', () => {
-//         it('should create a new instance of a Stack', () => {
-//             expect(this.stack).toBeInstanceOf(Stack)
-//         })
-//         it('should have a default val of null assigned to the top property', () => {
-//             expect(this.stack.top).toBeNull()
-//         })
-//         it('should have a default val of 0 assigned to the size property', () => {
-//             expect(this.stack.size).toEqual(0)
-//         })
-//         it('should have a maxSize property with a default val of 1048', () => {
-//             expect(this.stack.maxSize).toEqual(1048)
-//         })
-//     })
-//     describe('#push', () => {
-//         it('should have a size of 20', () => {
-//             [...Array(20)].map((e, i) => this.stack.push(~~(Math.random() * i)))
-//             expect(this.stack.size).toEqual(20)
-//         })
-//         it('should add a new node with the val of 1 to the top of the stack', () => {
-//             this.stack.push(1)
-//             expect(this.stack.top.val).toEqual(1)
-//         })
-//         it('throw an error when maxSize is met', () => {
-//             expect(() => {
-//                 [...Array(1049)].map((e, i) => this.stack.push(~~(Math.random() * i)))
-//             }).toThrow()
-//         })
-//     })
-//     describe('#pop', () => {
-//         it('should remove the top most node from the stack', () => {
-//             this.stack.push(1)
-//             expect(this.stack.top.val).toEqual(1)
-//             expect(this.stack.pop().val).toEqual(1)
+        it('should create a new instance of a Stack', () => {
+            expect(stack).toBeInstanceOf(Stack);
+        });
 
-//         })
-//     })
-//     describe('#peek', () => {
-//         it('should return the top of the stack', () => {
-//             expect(this.stack.top).toBeNull()
-//             this.stack.push(1)
-//             expect(this.stack.peek().val).toEqual(1)
-//         })
-//     })
-// })
+        it('should have a default val of null assigned to the top property', () => {
+            expect(stack.top).toBeNull();
+        });
+
+        it('should have a default val of 0 assigned to the size property', () => {
+            expect(stack.size).toEqual(0);
+        });
+
+        it('should have a maxSize property with a default val of 1048', () => {
+            expect(stack.maxSize).toEqual(1048);
+        });
+    });
+
+    describe('#Push', () => {
+        let stack = new Stack();
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        stack.push(4);
+        stack.push(5);
+
+        it('should have a size of 5', () => {
+            expect(stack.size).toEqual(5);
+            console.log(stack);
+        });
+
+        it('should add a new node with the value of 6 to the top of the stack', () => {
+            stack.push(6);
+            expect(stack.top.value).toEqual(6);
+        });
+
+        it('throw an error when maxSize is met', () => {
+            expect(() => {
+                [...Array(1049)].map((e, i) => this.stack.push(~~(Math.random() * i)));
+            }).toThrow();
+        });
+    });
+
+    describe('#Pop', () => {
+        let stack = new Stack();
+
+        it('should remove the top most node from the stack', () => {
+            stack.push(1);
+            expect(stack.top.value).toEqual(1);
+            expect(stack.pop().value).toEqual(1);
+        });
+
+        it('should throw an error when the stack size is 0', () => {
+            expect(() => {
+                stack.pop();
+            }).toThrow();
+        });
+    });
+
+    describe('#peek', () => {
+        let stack = new Stack();
+
+        it('should throw an error when the stack size is 0', () => {
+            expect(() => {
+                stack.peek();
+            }).toThrow();
+        });
+
+        it('should return the top of the stack', () => {
+            stack.push(1);
+            expect(stack.peek().value).toEqual(1);
+        });
+
+        it('should return the top of the stack', () => {
+            stack.push(2);
+            expect(stack.peek().value).toEqual(2);
+        });
+    });
+});

@@ -19,6 +19,7 @@ module.exports = class {
     }
 
     pop() {
+        if (!this.size) throw new Error('Nothing to pop!');
         let temp = this.top;
         this.top = temp.next;
         temp.next = null;
@@ -27,6 +28,7 @@ module.exports = class {
     }
 
     peek() {
+        if (!this.size) throw new Error('Nothing to peek at!');
         return this.top;
     }
 }
