@@ -9,6 +9,7 @@ module.exports = class {
         this.size = 0;
     }
 
+    // O(1) as it inserts the new node directly without iterating through the list 
     push(val) {
         if (this.size === this.maxSize) throw new Error('Stack overflow!');
         let node = new Node(val);
@@ -18,6 +19,7 @@ module.exports = class {
         return this.top;
     }
 
+    // O(1) as it only modifies the next node in the list and does not iterate through the whole list.
     pop() {
         if (!this.size) throw new Error('Nothing to pop!');
         let temp = this.top;
@@ -27,6 +29,7 @@ module.exports = class {
         return temp;
     }
 
+    // O(1) as we keep track of the top node so can access it directly
     peek() {
         if (!this.size) throw new Error('Nothing to peek at!');
         return this.top;

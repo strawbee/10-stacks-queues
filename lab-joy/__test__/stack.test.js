@@ -34,7 +34,6 @@ describe('Stack Data Structure Module', () => {
 
         it('should have a size of 5', () => {
             expect(stack.size).toEqual(5);
-            console.log(stack);
         });
 
         it('should add a new node with the value of 6 to the top of the stack', () => {
@@ -65,7 +64,7 @@ describe('Stack Data Structure Module', () => {
         });
     });
 
-    describe('#peek', () => {
+    describe('#Peek', () => {
         let stack = new Stack();
 
         it('should throw an error when the stack size is 0', () => {
