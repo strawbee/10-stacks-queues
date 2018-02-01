@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const Node = require('./nd');
 
@@ -34,4 +34,4 @@ module.exports = class {
         if (!this.size) throw new Error('Nothing to peek at!');
         return this.top;
     }
-}
+};
