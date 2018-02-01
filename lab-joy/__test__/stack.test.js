@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 require('jest');
 const Stack = require('../lib/stack');
